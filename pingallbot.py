@@ -80,12 +80,12 @@ async def everyone(client, message):
                 pass  
               i = i+j
           if i == lenMembersList:    
-            await message.reply(f"✅ | Successfully mentioned **total number of {i} members**.\n❌ | Bots and deleted accounts were rejected.") 
+            await message.reply(f"✅ | Başarıyla bahsedildi **toplam sayısı {i} members**.\n❌ | Botlar ve silinen hesaplar reddedildi.") 
           else:
-            await message.reply(f"✅ | Successfully mentioned **{i} members.**\n❌ | Bots and deleted accounts were rejected.")    
+            await message.reply(f"✅ | Başarıyla bahsedildi  **{i} members.**\n❌ | Botlar ve silinen hesaplar reddedildi.")    
           chatQueue.remove(message.chat.id)
     else:
-      await message.reply("👮🏻 | Sorry, **only admins** can execute this command.")  
+      await message.reply("👮🏻 | Pardon adamım, **Admin** Değilsin sadece adminler çalıştırabilir")  
   except FloodWait as e:
     await asyncio.sleep(e.value) 
 
@@ -107,7 +107,7 @@ async def remove(client, message):
           await message.reply("⛔️ | I'm already working on my maximum number of 5 chats at the moment. Please try again shortly.")
         else:  
           if message.chat.id in chatQueue:
-            await message.reply("🚫 | There's already an ongoing process in this chat. Please /stop to start a new one.")
+            await message.reply("🚫 | Bu sohbette zaten devam eden bir süreç var. Yeni bir tane başlatmak için lütfen /durdurun.")
           else:  
             chatQueue.append(message.chat.id)  
             deletedList = []
@@ -234,13 +234,15 @@ async def bots(client, message):
 async def start(client, message):
   text = f'''
 Heya {message.from_user.mention},
-My name is **PingAll**. I'm here to help you to get everyone's attention by mentioning all members in your chat.
+Benim ismim **Hun etiket Bot**. Sohbetinizdeki tüm üyelerden bahsederek herkesin dikkatini çekmenize yardımcı olmak için buradayım.
 
-I have some additional cool features and also I can work in channels.
 
-Don't forget to join my [channel](http://t.me/teletipsofficialchannel) to recieve information on all the latest updates.
+Bazı ek harika özelliklerim var ve ayrıca kanallarda çalışabilirim.
 
-Hit /help to find out my commands and the use of them.
+
+Yapımcımın telegram kullanıcı adı [channel](http://t.me/Baskan) 
+
+Komutlarımı ve bunların kullanımını öğrenmek için /help'e basın.
 '''
   await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
 
@@ -251,13 +253,11 @@ async def help(client, message):
 Hey, let's have a quick look at my commands.
 
 **Commands**:
-- /ping "input": <i>Mention all members.</i>
-- /remove: <i>Remove all deleted accounts.</i>
-- /admins: <i>Mention all admins.</i>
-- /bots: <i>Get the full bot list.</i>
-- /stop: <i>Stop an on going process.</i>
+- /ping "input": <i>Tüm üyelerden bahsedin.</i>
+- /remove: <i>Silinen tüm hesapları kaldırın.</i>
+- /admins: <i>Tüm yöneticilerden bahsedin.</i>
+- /stop: <i>Devam eden bir süreci durdurun.</i>
 
-If you have any questions on how to use me, feel free to ask in my [support group](https://t.me/teletipsofficialontopicchat). More on my [page](https://github.com/teletips/PingAllBot-TeLeTiPs).
 '''
   await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
 
